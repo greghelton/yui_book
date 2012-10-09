@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+  Hello World
+  <div id="mycal-id" class="yui3-skin-night">
+    Calendar goes here
+  </div>
+
+  <div id="ademo"></demo>
+  <div id="bdemo"></div>
+  <div id="cdemo"></div>
+
+  <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+  <script type="text/javascript">
+
+    YUI({
+      skin: { defaultSkin: 'night' }
+    }).use('calendar', function (Y) {
+      new Y.Calendar({ width: 300 }).render('#ademo'); 
+    });
+
+    YUI().use('json-stringify', 'node-base', function (Y, loaderResponse) {
+      Y.one('#bdemo').setHTML("onetwothree");
+    });
+
+    YUI({
+      gallery: 'gallery-2010.08.25-19-45' }).use('gallery-torelativetime', 'node', function (Y) {
+        var entryTime = new Date(2011,10,1);
+        Y.one('#cdemo').setHTML(Y.toRelativeTime(entryTime)); 
+      });
+
+  </script>
+</body>
+</html>
